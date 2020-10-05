@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <SecureCertificate>b2e371c3c3a1eb28767d311e783dee67891de746</SecureCertificate> <!-- Certificate Sreial Number from local Computer Certificate Store -->  
+  <MailAccounts>
+    <Account>
+      <UserName>Wolf</UserName>
+      <Mail>m.wolf@ulewu.de</Mail>
+      <Password>WBi7D+L7bY2QkB1A86d2gxuMuNwH4AL3dkA1Izw5PsxNM5BkKAN74fe6gxNGH0LgI8DCXRyoBJ0XsEWtxZjnVOuXZMSAIR4DWyQUpVryXCCxABdl3cLr9FDJ7/4b6crAr9nnW6oKxMfU7mndyADVN5gmP4w9tPxExsKchLkKSlCx9VWk/Cspitbh1Tq9XfEA6VTRgFDX+azz09Tf3W5GtXT7rL7QI0tRJS9VRxlWklxIQ+cAIUZpZd1VpNQVpBNMy+hw++0D5CqHvKu0EfRSe06hRGRcVBIbWLykTTa6Wnux6lHBJ8TwxDnioM4KA3Z4Fk96bu26OI5Zv6OXr0YWpQ==</Password>
+    </Account>
+    <Account>
+      <UserName>Ede</UserName>
+      <Mail>EDE@ulewu.de</Mail>
+      <Password>D3FG5DS4SY6FxMg084B5CjIx8UHyCGGUOgte4urF8r6V0kRwrc7VF+EhsNQFElctjkh3qJStuHnOzi9buY+/n7oTDCNYMvqhp/gddJmlECJ6/VqsmqdRqoqU1wIUg/NFO5WqRqhEUE60i7RXQht6oVmYJk36gABz3oBUgN7S8mc=</Password>
+    </Account>
+    <Account>
+      <UserName>Test-Error</UserName>
+      <Mail>Test-Error@ulewu.de</Mail>
+      <Password-testerr>NFO5WqRqhEUE60i7RXQht6oVmYJk36gABz3oBUgN7S8mc=</Password-testerr>
+    </Account>
+  </MailAccounts>
+</config>
