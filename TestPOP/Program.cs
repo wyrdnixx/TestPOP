@@ -62,6 +62,7 @@ namespace TestPOP
             if (args.Length == 0)
             {
                 getConfig();
+                createProgrammFolders();
                 startProcessing();
             } else if(args.Length == 3)
             {
@@ -72,11 +73,20 @@ namespace TestPOP
                 DefaultLogger.Log.LogError("Error: Programm started with invalid parameter lengt. \n Use '...exe <mailboxname> <Email@address.com> <cleartextpassword>");
 
             }
-
             
-
-
         
+
+        }
+
+        private static void createProgrammFolders()
+        {
+            bool existsINBOUND = System.IO.Directory.Exists( System.Environment.CurrentDirectory + @"\INBOUND");
+            if (!existsINBOUND)
+                System.IO.Directory.CreateDirectory(System.Environment.CurrentDirectory + @"\INBOUND");
+
+            bool existsERROR = System.IO.Directory.Exists(System.Environment.CurrentDirectory + @"\ERROR");
+            if (!existsERROR)
+                System.IO.Directory.CreateDirectory(System.Environment.CurrentDirectory + @"\ERROR");
 
         }
 
@@ -103,7 +113,7 @@ namespace TestPOP
             stopWatch.Start();
 
 
-            if (paralellProcessing)
+            if (!paralellProcessing)
             {
                 foreach (MailAccount acc in MailAccounts)
                 {
@@ -300,11 +310,20 @@ namespace TestPOP
 
                         String filename = "mail_" + m.Headers.MessageId + ".eml";
 
-                        FileInfo file = new FileInfo(filename);
+                        FileInfo file = new FileInfo(System.Environment.CurrentDirectory + @"\INBOUND\" + filename);
                         // Save the full message to some file
-                        m.Save(file);
 
-                        client.DeleteMessage(i);
+                        try
+                        {
+                            m.Save(file);
+                            client.DeleteMessage(i);
+                        } catch (Exception e)
+                        {
+                            DefaultLogger.Log.LogError("Error writing mail to file : " + e.Message);
+                        }
+                        
+
+                        
 
 
 
