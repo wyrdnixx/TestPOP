@@ -16,6 +16,9 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Xml;
 using System.Xml.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+
 
 // http://hpop.sourceforge.net/examples.php
 
@@ -92,11 +95,37 @@ namespace TestPOP
 
         private static void startProcessing()
         {
-            foreach (MailAccount acc in MailAccounts)
+
+            bool paralellProcessing = false;
+           // bool paralellProcessing = true;
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+
+            if (paralellProcessing)
             {
-                DefaultLogger.Log.LogDebug("------------ From Accounts-List: " + acc.Username);
-                proccessMailAccount(acc);
+                foreach (MailAccount acc in MailAccounts)
+                {
+                    DefaultLogger.Log.LogDebug("------------ From Accounts-List: " + acc.Username);
+                    proccessMailAccount(acc);
+                }
+            } else
+            {
+                Parallel.ForEach(MailAccounts, (current) => {
+                    DefaultLogger.Log.LogDebug("------------ From Accounts-List: " + current.Username);
+                    proccessMailAccount(current);
+                });
             }
+
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+
+            // Format and display the TimeSpan value.
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
         }
 
         static void getConfig()
@@ -247,8 +276,10 @@ namespace TestPOP
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("ERROR : " + username + " : Auth not successfull", e.Message);
-                    
+                    //Console.WriteLine("ERROR : " + username + " : Auth not successfull", e.Message);
+                    DefaultLogger.Log.LogError("ERROR : " + username + " : Auth not successfull : "+ e.Message);
+
+
                 }
 
                 if(ConOk & AuthOk)
@@ -384,22 +415,25 @@ namespace TestPOP
 
         public void LogError(string message)
         {
+           // var sw = new FileStream(LogFilePath, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);            
+        
 
-           
-            using (StreamWriter sw = File.AppendText(LogFilePath))
-            {sw.WriteLine("ERROR-DEBUG: " + message);}
+        using (StreamWriter sw = File.AppendText(LogFilePath))
+        {sw.WriteLine("ERROR-DEBUG: " + message);}
+        
 
-            Console.WriteLine("ERROR!!!: " + message);
+        Console.WriteLine("ERROR!!!: " + message);
             System.Diagnostics.Debug.WriteLine("ERROR-DEBUG: " + message);
         }
 
         public void LogDebug(string message)
         {
 
-            
+            /*
             using (StreamWriter sw = File.AppendText(LogFilePath))
             { sw.WriteLine("DEBUG-Line: " + message); }
-
+          */
+          
             Console.WriteLine("DEBUG-Line: " + message);
             System.Diagnostics.Debug.WriteLine("DEBUG-Log: " + message);
             // Dont want to log debug messages
