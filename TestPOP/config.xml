@@ -3,19 +3,65 @@
   <SecureCertificate>b2e371c3c3a1eb28767d311e783dee67891de746</SecureCertificate> <!-- Certificate Sreial Number from local Computer Certificate Store -->  
   <MailAccounts>
     <Account>
-      <UserName>Wolf</UserName>
+      <UserName>MWolf</UserName>
       <Mail>m.wolf@ulewu.de</Mail>
       <Password>WBi7D+L7bY2QkB1A86d2gxuMuNwH4AL3dkA1Izw5PsxNM5BkKAN74fe6gxNGH0LgI8DCXRyoBJ0XsEWtxZjnVOuXZMSAIR4DWyQUpVryXCCxABdl3cLr9FDJ7/4b6crAr9nnW6oKxMfU7mndyADVN5gmP4w9tPxExsKchLkKSlCx9VWk/Cspitbh1Tq9XfEA6VTRgFDX+azz09Tf3W5GtXT7rL7QI0tRJS9VRxlWklxIQ+cAIUZpZd1VpNQVpBNMy+hw++0D5CqHvKu0EfRSe06hRGRcVBIbWLykTTa6Wnux6lHBJ8TwxDnioM4KA3Z4Fk96bu26OI5Zv6OXr0YWpQ==</Password>
     </Account>
     <Account>
-      <UserName>Ede</UserName>
+      <UserName>Ede-WrongUser</UserName>
       <Mail>EDE@ulewu.de</Mail>
-      <Password>D3FG5DS4SY6FxMg084B5CjIx8UHyCGGUOgte4urF8r6V0kRwrc7VF+EhsNQFElctjkh3qJStuHnOzi9buY+/n7oTDCNYMvqhp/gddJmlECJ6/VqsmqdRqoqU1wIUg/NFO5WqRqhEUE60i7RXQht6oVmYJk36gABz3oBUgN7S8mc=</Password>
+      <Password>WBi7D+L7bY2QkB1A86d2gxuMuNwH4AL3dkA1Izw5PsxNM5BkKAN74fe6gxNGH0LgI8DCXRyoBJ0XsEWtxZjnVOuXZMSAIR4DWyQUpVryXCCxABdl3cLr9FDJ7/4b6crAr9nnW6oKxMfU7mndyADVN5gmP4w9tPxExsKchLkKSlCx9VWk/Cspitbh1Tq9XfEA6VTRgFDX+azz09Tf3W5GtXT7rL7QI0tRJS9VRxlWklxIQ+cAIUZpZd1VpNQVpBNMy+hw++0D5CqHvKu0EfRSe06hRGRcVBIbWLykTTa6Wnux6lHBJ8TwxDnioM4KA3Z4Fk96bu26OI5Zv6OXr0YWpQ==</Password>
     </Account>
     <Account>
-      <UserName>Test-Error</UserName>
-      <Mail>Test-Error@ulewu.de</Mail>
-      <Password-testerr>NFO5WqRqhEUE60i7RXQht6oVmYJk36gABz3oBUgN7S8mc=</Password-testerr>
+      <UserName>Jochen.Drueberbauer</UserName>
+      <Mail>Jochen.Drueberbauer@ulewu.de</Mail>
+      <Password>C1nUXS6PbPok2KD70fydZcffM5VJ6xaewe6uZnPMPKMaFknDthwy2Dj43VQeZyD8Hb5Ep29wprA47m28arzSc4Hu7oZbCBz9lQ/SLCymxiIsVfAPXpCiB2UCxnF+zMp8t0RN/bLBxKzIjqdZrTzVvTHJK2CF+F/uTZbFHsCw+Ivn5G/K7W2lD41BA76sqAB4AephfHUOqXePa/5XDDclIJ+ViRG7Er+OScXnKdmMjE8/HE8RsvyG9unSKdrBRtPrpaxOjpHoP3R3kiDWKohygdxkR8Um6iDZFfYMo+9/gP9+ugFnGuMFRnG2BeGuJ0u0GpxYsooHur31Hdeubm/zqw==</Password>
     </Account>
+    <Account>
+      <UserName>Eugen.Waldbauer</UserName>
+      <Mail>Eugen.Waldbauer@ulewu.de</Mail>
+      <Password>chMw2/JpFSmEx5Akm22g3CIXOwiRlI4ulGuecsSNnMB3IAwbrg+oXIb/neE5BxucffstU9c6dzUgFpp0WF3aFbrebxaMEb65E5h4Ib5NGfuA6JWbIjiDJ2tNkWwFe7x5o8IfJ44WwYuYULWKwil7QjntGMyw4Z7hx5G3cDViXatpvaEWnMHqt/k8CqbTYdFpClXltYnz3dGv8+ATO/HwRXbcEuFV+fsSF7V5OPHb50ZD/y3lxuGsC516pmFHK7m3Ke67QxsSCg8phtDQS8Vz3GPHpkchzpoBzG9JlPaxz++2mGeUvgWuhejCaKeR2pGDbtz6tD7frAnjAkf5AnHIbA==</Password>
+    </Account>
+    <Account>
+      <UserName>Peter.Waldbauer</UserName>
+      <Mail>Peter.Waldbauer@ulewu.de</Mail>
+      <Password>s5uUwJ5XEPzeMMplIbDKjIW1EdOlofqSSqbht1Nde1+2dTioEBOQC4SC3OQP3lUjy20hzXmZas29VgRYx/ro4pPDy/szhdTw2UjshUY4zalqt5gTMqKWIWjEAzwg1/gGE1LLJQIOToz7v5GSqAR2dn6e9rmLjGVD9xKwY7yTvzgo8TcY4Kt/QDk4gHjeSx6IC1g0W7UW7APtIFj8u9VtAAulXb14o2FafD2F9zY4jc6qNqAwPJOZw3ef6wYCVkg1q2FPzvDYc9nCqu9lufbuRsDuV4E8UCfnC0tKZtXjFXLufuR7z13UJeTzjb+wwd+paWcoN6VI58V52m3yGslEgA==</Password>
+    </Account>
+    <Account>
+      <UserName>Eugen.Hinterwaeldler</UserName>
+      <Mail>Eugen.Hinterwaeldler@ulewu.de</Mail>
+      <Password>f3z6XuN1rQCRznEUBxUHIO0KRFrQ9R5LAX8qChJBAt3d8NlngnGdTnoc06M4yZ9Rc3MwW/T+xwbs+gGdZYrix2yf63ci6VEe3PeB0pnhjcaRyPGvo9tgG/Uv2BnKxRAY6aC13Vka+/nmXdhZ2VC2ydPiBuTnZTc86SuyvsUhoto3X7PfuLjADaE8Z7y+6DmNUIcB3DR4KfoeysRitbi9BNWTJytPSY3cDlJHKFFeBsuQ/ZmrQ6NVGomUuhQWiWNE1LEGK8NDz3wa1buUv48dDylsOOZvKLRRUFzNRGLsIoweGd/NvS1h0o3J8nGSSYJYEo4p9/1muozEtudpd1LwoQ==</Password>
+    </Account>
+    <Account>
+      <UserName>Olga.Drueberbauer</UserName>
+      <Mail>Olga.Drueberbauer@ulewu.de</Mail>
+      <Password>k9ZZxiNdwrTIP/yODfPjNdLTnx+XB14DMDXhol7+oMBSihMXhnhGaX6lszdJv9kWOKEVoY570+1YLaXYRcmVrlKVuFwGTU04TM+UjkVAp+sKyVSHdBVf75q3Wfpe4LlX1kbU5ybavyEw+4Z3pf8CZb3f4dlUgq8PQY9+Ys3FNRPQHIpK5a85PsMLE1Oem5FqjG+yVzYMQYsLMxmBZNaReLh5q+U/f9Rqf/2ATiCqTpKvjJjxwqGQrq8aRZTyOU9mRkyM8sqE8vdobitHeCzliWuT0HLzYnOm1xIq4w3kcTAb0gtSOHmaLv9S2+dwr7Dovx1ZamAzFzDREO3oBG3UJQ==</Password>
+    </Account>
+    <Account>
+      <UserName>Eugen.Untermayer</UserName>
+      <Mail>Eugen.Untermayer@ulewu.de</Mail>
+      <Password>rPuFPxm9u3y3iTElYxHmEtvpQEHBxBy8szWjl78rO0qRz+QUuwD41qlez9/GAi5tH5l50aOOs1hAXyY5fSSHfDUNdD203x+704bf5o5mpEm/JMY51oogY5HCI3zmS1J+EgaXp/24hND6LKHr7c26KPbFaXQ2RYaDgfbOvJvGWIp2cAHKtj12ouuAbnjGKzeasvIK12vYo8hda0rC5pZa9Agnd3qh7mpbXTLEHVxD3UnjGNhp4OSMj1T+uErhw17w/c8g9Gbg7/dqaRF3yPtV3Dfqj5wuRGc8mMzNjYOqj9RkJiY2yf5cLb8QtErTsuiUEQTXDUvHAWVb+PFholyBEA==</Password>
+    </Account>
+    <Account>
+      <UserName>Otto.Waldbauer</UserName>
+      <Mail>Otto.Waldbauer@ulewu.de</Mail>
+      <Password>sXVyDOztiLMSaFsRrTn7tNWhLTLksBNZzmkdCqCu4YW5oR1AQytQuh8JW8siBBPSumUVD0HgGu3K2ZU7vC7+/QvS6NuO4MOccAQ4M6JGZzxo/7N6R7hz+7U7vzS31AGgiMkGzLDzOyUr5iMv7IdPqBq/Spt8tTHQRH01SRxGQ0szTYlTm6HaCWfCMWa8AQkNsofuWAu7/8INYU2fcZa6qcEAqedcJqOJMyWMlbRnadUpB5v2UKGn9noa3/f5Z5Nc8x61g3aLVseWxgs8UIiO/UZ7xOf/njUeP+U3Cx0OCKfM6aUT/iLEbtmn+phHYEDcQNoEBBoT2h2vSIPyloDRsw==</Password>
+    </Account>
+    <Account>
+      <UserName>Eugen.Unterbauer</UserName>
+      <Mail>Eugen.Unterbauer@ulewu.de</Mail>
+      <Password>XkbuIJtEaGeQDtU+V1kjd7i8Oeu/9JJPLESqHkFE9hQVzqRXAsT0TVl2hhSue3PA4jdzJcPgoMbtMf+uVi5NYapC/2rPz5hYNBgZtcG/F3GQsaqYoFWGflAqaCVRKE+IIOy43MSgBQidjbcGZS9HsEwbwGejEQr0uZZqxQh49EhiqrW6IHlQZhE+QkV4PLbU4uc0VYe2QYtbhJvuLxYG2WAcTCjr35hpKe9hOxlD/9f0Oh7O/sA//dOPY8istvYBiZLXBYuAuGXSpqH60AmpYQkemXkMRs9kq5K7MAhra4I5lcz/TwwVQrD5PbAPX2BHUygurBXXW7uI5ujJnQJAmg==</Password>
+    </Account>
+    <Account>
+      <UserName>Jochen.Waldbauer</UserName>
+      <Mail>Jochen.Waldbauer@ulewu.de</Mail>
+      <Password>icE5dE1sE2Ui6tVT+6xDsu3+4EyAKqw7xJY274WbvLDve95L+lHJJkVONBOCZXZL81/b6/s1BeI/oiuhhQeyuqCoBXeBTuHHJ+6Z2EjT8hvHP5JKC0PCA83icovY73b6Rjw8aRjENFw4r2goHWAaxWV7p2I4Fww5l4hH/EdBcNveQJJoiDJzLen+DP6h54LZwf1wziDi6kYUl5jAsDh44rDPtFiVXw1KNVObjo+yoQuECNPh/WqbwufGX6mulnK4hdLNzm43IwMMtjO6xGDPEeakrolXZUmKW0IetqiEvtHnEkd0Vl6EZUXHRhoE4ab1i11caXpt8OvX+QSpcfhWCg==</Password>
+    </Account>
+    <Account>
+      <UserName>Juergen.Obermayer</UserName>
+      <Mail>Juergen.Obermayer@ulewu.de</Mail>
+      <Password>ZweQnzXKeDjtZRDLcu6z0aLzx/etlCwqCvelAfp6vF9ZzOXUaEz5I8sD/mu7WixaQ8b4dwUN+jN2gph9lOWw2Ai/5zddUFa6l7Wrbiwmc8St4kncIqfsLNZmT6tSh03Pq8fuhXsId9HDfcFgC+5QMVsC9BF1RIKWoeDjeowu9KwF2Z0nwANZyzTKyL85VsttaI0Vu29snbxlDNKQjme1XYGJYtObK/RPIt0ZR6z/1xNMwXvX5S60ToWJacmRbaxs0eWdYYRdxJ77gExZaBe1RWMeorNftbphfIRAQVYpVKF4fNCG7P06CtxpRkJsqC2XvR5fo3EitPClYBEbbM+XAA==</Password>
+    </Account> 
+    
   </MailAccounts>
 </config>

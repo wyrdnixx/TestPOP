@@ -53,15 +53,50 @@ namespace TestPOP
         {
             ChangeLogging();
 
-            getConfig();
 
+        
 
-            foreach (MailAccount acc in MailAccounts)
+            if (args.Length == 0)
             {
-                DefaultLogger.Log.LogDebug("From Accounts-List: " + acc.Username);
-               proccessMailAccount(acc);
+                getConfig();
+                startProcessing();
+            } else if(args.Length == 3)
+            {
+                getConfig();
+                writetoconfig(args);
+            } else
+            {
+                DefaultLogger.Log.LogError("Error: Programm started with invalid parameter lengt. \n Use '...exe <mailboxname> <Email@address.com> <cleartextpassword>");
+
             }
 
+            
+
+
+        
+
+        }
+
+        private static void writetoconfig(string[] args) {
+
+            String pwdenc = Encryption(args[2]);
+            DefaultLogger.Log.LogDebug("Encrypted-PWD: " + pwdenc);
+            DefaultLogger.Log.LogDebug( System.Environment.NewLine +
+                @"<Account>" + System.Environment.NewLine +
+                @"<UserName>" + args[0] + @"</UserName>" + System.Environment.NewLine +
+                @"<Mail>" + args[1] + @"</Mail>" + System.Environment.NewLine +
+                @"<Password>" + pwdenc + @"</Password>" + System.Environment.NewLine +
+                @"</Account>"); 
+
+        }
+
+        private static void startProcessing()
+        {
+            foreach (MailAccount acc in MailAccounts)
+            {
+                DefaultLogger.Log.LogDebug("------------ From Accounts-List: " + acc.Username);
+                proccessMailAccount(acc);
+            }
         }
 
         static void getConfig()
@@ -134,7 +169,8 @@ namespace TestPOP
 
         static void proccessMailAccount(MailAccount _mailAccount)
         {
-            List<Message> AllMessages = FetchAllMessages("192.168.1.214", 995, true, "mwolf@chaos.local", Decryption(_mailAccount.Password));
+            List<Message> AllMessages = FetchAllMessages("192.168.1.214", 995, true, _mailAccount.Username, Decryption(_mailAccount.Password));
+            
         }
 
         static void oldMain()
@@ -211,7 +247,7 @@ namespace TestPOP
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("ERROR: Auth not successfull", e.Message);
+                    Console.WriteLine("ERROR : " + username + " : Auth not successfull", e.Message);
                     
                 }
 
@@ -246,7 +282,7 @@ namespace TestPOP
                     return allMessages;
                 } else
                 {
-                    DefaultLogger.Log.LogError("No connection or not authenticated...");
+                    DefaultLogger.Log.LogError("ERROR : " + username + "No connection or not authenticated...");
 
 
                     
