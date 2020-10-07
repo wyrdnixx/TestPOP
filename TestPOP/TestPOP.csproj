@@ -38,12 +38,32 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LumiSoft.Net, Version=4.5.7529.20874, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LumiSoft.Net.dll.4.5.7529.20877\lib\net45\Release\LumiSoft.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MsgReader, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3ba01cf3434959fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MsgReader.3.8.0\lib\net45\MsgReader.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenMcdf, Version=2.2.1.9, Culture=neutral, PublicKeyToken=fdbb1629d7c00800, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenMcdf.2.2.1.9\lib\net40\OpenMcdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="OpenPop, Version=2.0.6.1120, Culture=neutral, PublicKeyToken=6bdb97f144b7efc8, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenPop.NET.2.0.6.1120\lib\net40\OpenPop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RtfPipe, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b1b83b274d7d862f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MsgReader.3.8.0\lib\net45\RtfPipe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -63,6 +83,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EASendMail.dll" />
+    <Content Include="license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

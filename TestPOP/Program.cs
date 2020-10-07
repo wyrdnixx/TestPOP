@@ -19,9 +19,11 @@ using System.Xml.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
+//Install-Package LumiSoft.Net.dll
+using LumiSoft.Net.SMTP.Client;
 
-// http://hpop.sourceforge.net/examples.php
-
+// OpenPop -> http://hpop.sourceforge.net/examples.php
+// MsgReader -> https://www.nuget.org/packages/MSGReader/3.8.0 (Install-Package MSGReader -Version 3.8.0)
 
 namespace TestPOP
 {
@@ -65,10 +67,22 @@ namespace TestPOP
                 getConfigAccounts();
                 createProgrammFolders();
                 startProcessing();
+                startDelivery();
             } else if(args.Length == 3)
             {
                 getConfig();
                 writetoconfig(args);
+            } else if (args.Length == 1){
+                
+                switch (args[0])
+                {
+                    case "-delivery" :
+                        startDelivery();
+                        break;
+                    default:
+                        DefaultLogger.Log.LogError("Error: Invalid parameters...");
+                        break;
+                }
             } else
             {
                 DefaultLogger.Log.LogError("Error: Programm started with invalid parameter lengt. \n Use '...exe <mailboxname> <Email@address.com> <cleartextpassword>");
@@ -107,8 +121,8 @@ namespace TestPOP
         private static void startProcessing()
         {
 
-            bool paralellProcessing = false;
-           // bool paralellProcessing = true;
+            //bool paralellProcessing = false;
+            bool paralellProcessing = true;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -137,6 +151,51 @@ namespace TestPOP
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Console.WriteLine("RunTime " + elapsedTime);
+        }
+
+
+        private static void startDelivery()
+        {
+
+
+            DirectoryInfo curdir = new DirectoryInfo(System.Environment.CurrentDirectory + @"\INBOUND\");
+            FileInfo[] fileEntries =  curdir.GetFiles("*.eml");
+
+            //string[] fileEntries = Directory.GetFiles(System.Environment.CurrentDirectory + @"\INBOUND\","*.eml");
+            foreach (FileInfo fileName in fileEntries)
+            {
+                
+                DefaultLogger.Log.LogDebug("Filename: " + fileName.FullName);
+                
+                var eml = MsgReader.Mime.Message.Load(fileName);
+
+
+                if (eml.Headers != null)
+                {
+                    if (eml.Headers.To != null)
+                    {
+                        foreach (var recipient in eml.Headers.To)
+                        {
+                            var to = recipient.Address;
+                            DefaultLogger.Log.LogDebug("Mail to: " + to);
+
+                            using (FileStream fs = new FileStream(fileName.FullName, FileMode.Open, FileAccess.Read))
+                            using (LumiSoft.Net.SMTP.Client.SMTP_Client client =
+                                  new LumiSoft.Net.SMTP.Client.SMTP_Client())
+                            {
+
+                                var message = LumiSoft.Net.Mail.Mail_Message.ParseFromFile(fileName.FullName);
+
+                                
+                                //SMTP_Client.QuickSendSmartHost("localhost", "192.168.1.216", 25, false, "fakeuser", "fakepassword", message);
+                                SMTP_Client.QuickSendSmartHost("192.168.1.216", 26, false, message);
+                            }
+                        }
+                    }
+                }
+
+            }
+
         }
 
         static void getConfig()

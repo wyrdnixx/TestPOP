@@ -1,0 +1,7 @@
+
+
+## Test und evtl. fix - Abfangen, wenn eine mail nicht als file gespeichert werden kann
+
+## smtp-server konfig per config.xml
+## try/catch smtp-Send
+
