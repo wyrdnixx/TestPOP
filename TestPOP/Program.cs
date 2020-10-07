@@ -62,6 +62,7 @@ namespace TestPOP
             if (args.Length == 0)
             {
                 getConfig();
+                getConfigAccounts();
                 createProgrammFolders();
                 startProcessing();
             } else if(args.Length == 3)
@@ -93,7 +94,7 @@ namespace TestPOP
         private static void writetoconfig(string[] args) {
 
             String pwdenc = Encryption(args[2]);
-            DefaultLogger.Log.LogDebug("Encrypted-PWD: " + pwdenc);
+            //DefaultLogger.Log.LogDebug("Encrypted-PWD: " + pwdenc);
             DefaultLogger.Log.LogDebug( System.Environment.NewLine +
                 @"<Account>" + System.Environment.NewLine +
                 @"<UserName>" + args[0] + @"</UserName>" + System.Environment.NewLine +
@@ -140,26 +141,35 @@ namespace TestPOP
 
         static void getConfig()
         {
-           
+
             XDocument xmlDoc = XDocument.Load(".\\config.xml");
 
 
             IEnumerable<XElement> CfgCerts = xmlDoc.Descendants("SecureCertificate");
-            if (CfgCerts.Count() !=1 )
+            if (CfgCerts.Count() != 1)
             {
                 DefaultLogger.Log.LogError("CFG-Error: More than one certificate specified.");
-            }else
+            } else
             {
 
                 foreach (var cer in xmlDoc.Descendants("SecureCertificate"))
-                {                    
+                {
                     DefaultLogger.Log.LogDebug("CertSN from Config: " + cer.Value);
-                    getLocalCertificate(cer.Value);
+
+                    /// Exit application if certificate error occurs
+                    if (!getLocalCertificate(cer.Value))
+                    {
+                        DefaultLogger.Log.LogError("CFG-Error: Certificate Error");
+                        Environment.Exit(1);
+                    }
                 }
             }
+        }
+        static void getConfigAccounts()
+        {
             
-
-                foreach (var acc in xmlDoc.Descendants("Account"))
+            XDocument xmlDoc = XDocument.Load(".\\config.xml");
+            foreach (var acc in xmlDoc.Descendants("Account"))
             {
                 try
                 {
@@ -177,7 +187,7 @@ namespace TestPOP
 
         }
 
-        private static void getLocalCertificate(String certThumbPrint)
+        private static bool getLocalCertificate(String certThumbPrint)
         {
             X509Store store = new X509Store("My", StoreLocation.LocalMachine);
             store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
@@ -188,6 +198,7 @@ namespace TestPOP
             if (1 != certCollection.Count)
             {
                 DefaultLogger.Log.LogError("Error: No certificate or more than one found containing thumbprint ");
+                return false;
             } else
             {
                 PrivKey =  certCollection[0].GetRSAPrivateKey().ToString();
@@ -197,18 +208,29 @@ namespace TestPOP
                 localCert = certCollection[0];
 
                 // TESTS
+                /*
                 String pwdenc = Encryption("mwolf");
                 DefaultLogger.Log.LogDebug("PWD-Encrypted: " + pwdenc);
                 String pwddec = Decryption(pwdenc);
                 DefaultLogger.Log.LogDebug("PWD-Decrypted: " + pwddec);
-
+                */
+                return true;
             }
 
         }
 
         static void proccessMailAccount(MailAccount _mailAccount)
         {
-            List<Message> AllMessages = FetchAllMessages("192.168.1.214", 995, true, _mailAccount.Username, Decryption(_mailAccount.Password));
+            
+                string _pwd = Decryption(_mailAccount.Password);
+                if (_pwd != null)
+                {
+                    List<Message> AllMessages = FetchAllMessages("192.168.1.214", 995, true, _mailAccount.Username, _pwd);
+                } else
+                {            
+                DefaultLogger.Log.LogError("ERROR: could not decrypt password for mailbox: " + _mailAccount.Username);
+                }
+            
             
         }
 
